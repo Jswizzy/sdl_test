@@ -72,39 +72,15 @@ bool loadMedia() {
     //Loading success flag
     bool success = true;
 
-    //Load default surface
-    gKeyPressSurfaces[KEY_PRESS_SURFACE_DEFAULT] = loadSurface("images/press.bmp");
-    if (gKeyPressSurfaces[KEY_PRESS_SURFACE_DEFAULT] == nullptr) {
-        printf("Failed to load default image!\n");
-        success = false;
-    }
+    std::string paths[]{"images/press.bmp", "images/up.bmp", "images/down.bmp", "images/left.bmp", "images/right.bmp"};
 
-    //Load up surface
-    gKeyPressSurfaces[KEY_PRESS_SURFACE_UP] = loadSurface("images/up.bmp");
-    if (gKeyPressSurfaces[KEY_PRESS_SURFACE_UP] == nullptr) {
-        printf("Failed to load up image!\n");
-        success = false;
-    }
-
-    //Load down surface
-    gKeyPressSurfaces[KEY_PRESS_SURFACE_DOWN] = loadSurface("images/down.bmp");
-    if (gKeyPressSurfaces[KEY_PRESS_SURFACE_DOWN] == nullptr) {
-        printf("Failed to load down image!\n");
-        success = false;
-    }
-
-    //Load left surface
-    gKeyPressSurfaces[KEY_PRESS_SURFACE_LEFT] = loadSurface("images/left.bmp");
-    if (gKeyPressSurfaces[KEY_PRESS_SURFACE_LEFT] == nullptr) {
-        printf("Failed to load left image!\n");
-        success = false;
-    }
-
-    //Load right surface
-    gKeyPressSurfaces[KEY_PRESS_SURFACE_RIGHT] = loadSurface("images/right.bmp");
-    if (gKeyPressSurfaces[KEY_PRESS_SURFACE_RIGHT] == nullptr) {
-        printf("Failed to load right image!\n");
-        success = false;
+    for (int i = 0; i < KEY_PRESS_SURFACE_TOTAL; i++) {
+        //Load default surface
+        gKeyPressSurfaces[i] = loadSurface(paths[i]);
+        if (gKeyPressSurfaces[i] == nullptr) {
+            printf("Failed to load default image!\n");
+            success = false;
+        }
     }
 
     return success;
